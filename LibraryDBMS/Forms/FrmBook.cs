@@ -16,7 +16,6 @@ namespace LibraryDBMS.Forms
 {
     public partial class FrmBook : Form
     {
-        DataTable bringEditDataToOtherForm = new DataTable();
         public FrmBook()
         {
             InitializeComponent();
@@ -75,15 +74,18 @@ namespace LibraryDBMS.Forms
                     break ;
 
                 case "btnRefresh":
-                    FrmBook_Load(sender, e);
+                    FrmBook_Load(sender,e);
                     break;
             }
         }
+
         
 
 
         private void FrmBook_Load(object sender, EventArgs e)
         {
+
+            this.cbbMeanOfSearch.Items.Clear();
             this.txtSearch.Clear();
             this.btnEdit.Enabled = false;
             this.btnDelete.Enabled = false;
@@ -169,5 +171,6 @@ namespace LibraryDBMS.Forms
             this.btnDelete.Enabled = true;
             this.btnEdit.Enabled = true;
         }
+
     }
 }

@@ -106,6 +106,7 @@
             this.Column2});
             this.dgvBookCategories.Location = new System.Drawing.Point(35, 98);
             this.dgvBookCategories.Name = "dgvBookCategories";
+            this.dgvBookCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBookCategories.Size = new System.Drawing.Size(447, 410);
             this.dgvBookCategories.TabIndex = 3;
             this.dgvBookCategories.Click += new System.EventHandler(this.dgvBookCategories_Click);
@@ -132,13 +133,14 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "View Categories";
             // 
-            // FormViewBookCategory
+            // FrmViewBookCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 600);
             this.Controls.Add(this.panelMain);
-            this.Name = "FormViewBookCategory";
+            this.Name = "FrmViewBookCategory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormViewBookCategory";
             this.Load += new System.EventHandler(this.FormViewBookCategory_Load);
             this.panelMain.ResumeLayout(false);

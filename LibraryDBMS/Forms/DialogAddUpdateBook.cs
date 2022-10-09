@@ -154,7 +154,27 @@ namespace LibraryDBMS.Forms
             else
             {
                 e.Handled = true;
+
             }
+        }
+
+        private void txtCategoryID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            isNumberOrBackSpace = false;
+            if ((char.IsNumber(e.KeyChar) || e.KeyChar == 8))
+            {
+                isNumberOrBackSpace = true;
+            }
+            else
+            {
+                e.Handled = true;
+
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
