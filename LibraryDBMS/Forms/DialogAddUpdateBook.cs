@@ -40,6 +40,7 @@ namespace LibraryDBMS.Forms
                 this.lblBook.Text = "Add New Book Data";
                 this.txtBookID.Text = LibModule.GetAutoID("tblBook","bookID");
                 this.btnOperation.Text = "Add";
+                this.btnClear.Enabled = true;
             }
             else
             {
@@ -47,6 +48,7 @@ namespace LibraryDBMS.Forms
                 this.lblBook.Text = "Edit Book Data";
                 this.btnOperation.Text = "Edit";
                 this.PopulateFields();
+                this.btnClear.Enabled = false;
             }
         }
         private void PopulateFields()
@@ -64,6 +66,7 @@ namespace LibraryDBMS.Forms
             this.txtCategoryID.Text = dataTable.Rows[0]["cateID"].ToString();
             this.dtpDateAdded.Value = Convert.ToDateTime(dataTable.Rows[0]["dateAdded"]);
         }
+        
 
         private void Button_Click(object sender,EventArgs e)
         {
@@ -137,28 +140,22 @@ namespace LibraryDBMS.Forms
                     Form formViewBookCategory = new FrmViewBookCategory();
                     formViewBookCategory.ShowDialog();
                     break ;
+                case "btnClear":
+                    this.txtISBN.Clear();
+                    this.txtDEWEYCode.Clear();
+                    this.txtTitle.Clear();
+                    this.txtAuthor.Clear();
+                    this.txtPublisher.Clear();
+                    this.txtYear.Clear();
+                    this.txtPages.Clear();
+                    this.txtOthers.Clear();
+                    this.txtQuantity.Clear();
+                    this.txtCategoryID.Clear();
+                    this.dtpDateAdded.Value = DateTime.Now;
+                    break;
             }
         }
-
-
-
-        #endregion
-
-        private void txtYear_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            isNumberOrBackSpace = false;
-            if (char.IsNumber(e.KeyChar) || e.KeyChar == 8)
-            {
-                isNumberOrBackSpace = true;
-            }
-            else
-            {
-                e.Handled = true;
-
-            }
-        }
-
-        private void txtCategoryID_KeyPress(object sender, KeyPressEventArgs e)
+        private void numberOnlyKeyPress(object sender,KeyPressEventArgs e)
         {
             isNumberOrBackSpace = false;
             if ((char.IsNumber(e.KeyChar) || e.KeyChar == 8))
@@ -171,6 +168,11 @@ namespace LibraryDBMS.Forms
 
             }
         }
+
+
+        #endregion
+
+
 
         private void btnClose_Click(object sender, EventArgs e)
         {

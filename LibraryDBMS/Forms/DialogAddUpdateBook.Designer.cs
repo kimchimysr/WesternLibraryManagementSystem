@@ -56,6 +56,7 @@
             this.txtYear = new System.Windows.Forms.TextBox();
             this.lblBook = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -143,7 +144,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 31);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Arthor:";
+            this.label5.Text = "Author:";
             // 
             // txtPublisher
             // 
@@ -169,6 +170,7 @@
             this.txtPages.Name = "txtPages";
             this.txtPages.Size = new System.Drawing.Size(131, 26);
             this.txtPages.TabIndex = 15;
+            this.txtPages.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberOnlyKeyPress);
             // 
             // label8
             // 
@@ -185,13 +187,13 @@
             this.txtOthers.Location = new System.Drawing.Point(454, 166);
             this.txtOthers.Multiline = true;
             this.txtOthers.Name = "txtOthers";
-            this.txtOthers.Size = new System.Drawing.Size(131, 69);
+            this.txtOthers.Size = new System.Drawing.Size(131, 119);
             this.txtOthers.TabIndex = 17;
             // 
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(328, 163);
+            this.label9.Location = new System.Drawing.Point(328, 207);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(112, 31);
             this.label9.TabIndex = 16;
@@ -200,15 +202,16 @@
             // txtQuantity
             // 
             this.txtQuantity.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.Location = new System.Drawing.Point(454, 256);
+            this.txtQuantity.Location = new System.Drawing.Point(454, 316);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(131, 26);
             this.txtQuantity.TabIndex = 19;
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberOnlyKeyPress);
             // 
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(328, 253);
+            this.label10.Location = new System.Drawing.Point(328, 313);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(112, 31);
             this.label10.TabIndex = 18;
@@ -217,16 +220,16 @@
             // txtCategoryID
             // 
             this.txtCategoryID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCategoryID.Location = new System.Drawing.Point(454, 313);
+            this.txtCategoryID.Location = new System.Drawing.Point(454, 367);
             this.txtCategoryID.Name = "txtCategoryID";
             this.txtCategoryID.Size = new System.Drawing.Size(131, 26);
             this.txtCategoryID.TabIndex = 21;
-            this.txtCategoryID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCategoryID_KeyPress);
+            this.txtCategoryID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberOnlyKeyPress);
             // 
             // label11
             // 
             this.label11.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(328, 310);
+            this.label11.Location = new System.Drawing.Point(328, 364);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(112, 31);
             this.label11.TabIndex = 20;
@@ -235,7 +238,7 @@
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(328, 361);
+            this.label12.Location = new System.Drawing.Point(328, 417);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(112, 31);
             this.label12.TabIndex = 22;
@@ -255,9 +258,9 @@
             this.btnOperation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             this.btnOperation.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOperation.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnOperation.Location = new System.Drawing.Point(302, 410);
+            this.btnOperation.Location = new System.Drawing.Point(12, 476);
             this.btnOperation.Name = "btnOperation";
-            this.btnOperation.Size = new System.Drawing.Size(96, 46);
+            this.btnOperation.Size = new System.Drawing.Size(96, 56);
             this.btnOperation.TabIndex = 27;
             this.btnOperation.Text = "Operation";
             this.btnOperation.UseVisualStyleBackColor = false;
@@ -268,9 +271,9 @@
             this.btnCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             this.btnCategory.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCategory.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCategory.Location = new System.Drawing.Point(454, 410);
+            this.btnCategory.Location = new System.Drawing.Point(199, 476);
             this.btnCategory.Name = "btnCategory";
-            this.btnCategory.Size = new System.Drawing.Size(96, 46);
+            this.btnCategory.Size = new System.Drawing.Size(96, 56);
             this.btnCategory.TabIndex = 28;
             this.btnCategory.Text = "Category";
             this.btnCategory.UseVisualStyleBackColor = false;
@@ -281,7 +284,7 @@
             this.dtpDateAdded.CustomFormat = "dd-MM-yyyy";
             this.dtpDateAdded.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateAdded.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateAdded.Location = new System.Drawing.Point(454, 361);
+            this.dtpDateAdded.Location = new System.Drawing.Point(454, 417);
             this.dtpDateAdded.Name = "dtpDateAdded";
             this.dtpDateAdded.Size = new System.Drawing.Size(131, 26);
             this.dtpDateAdded.TabIndex = 29;
@@ -293,7 +296,7 @@
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(131, 26);
             this.txtYear.TabIndex = 31;
-            this.txtYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtYear_KeyPress);
+            this.txtYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberOnlyKeyPress);
             // 
             // lblBook
             // 
@@ -320,11 +323,25 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnClear.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnClear.Location = new System.Drawing.Point(404, 476);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(96, 56);
+            this.btnClear.TabIndex = 33;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.Button_Click);
+            // 
             // DialogAddUpdateBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 497);
+            this.ClientSize = new System.Drawing.Size(597, 544);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblBook);
             this.Controls.Add(this.txtYear);
@@ -353,6 +370,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBookID);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DialogAddUpdateBook";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DialogAddUpdateBook";
@@ -391,5 +410,6 @@
         private System.Windows.Forms.TextBox txtYear;
         private System.Windows.Forms.Label lblBook;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnClear;
     }
 }
