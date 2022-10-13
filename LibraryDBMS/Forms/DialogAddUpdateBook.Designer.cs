@@ -51,12 +51,12 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnOperation = new System.Windows.Forms.Button();
-            this.btnCategory = new System.Windows.Forms.Button();
             this.dtpDateAdded = new System.Windows.Forms.DateTimePicker();
             this.txtYear = new System.Windows.Forms.TextBox();
             this.lblBook = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnGetCategoryID = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -102,6 +102,7 @@
             this.txtDEWEYCode.Name = "txtDEWEYCode";
             this.txtDEWEYCode.Size = new System.Drawing.Size(131, 26);
             this.txtDEWEYCode.TabIndex = 5;
+            this.txtDEWEYCode.TextChanged += new System.EventHandler(this.txtDEWEYCode_TextChanged);
             // 
             // label3
             // 
@@ -187,7 +188,7 @@
             this.txtOthers.Location = new System.Drawing.Point(454, 166);
             this.txtOthers.Multiline = true;
             this.txtOthers.Name = "txtOthers";
-            this.txtOthers.Size = new System.Drawing.Size(131, 119);
+            this.txtOthers.Size = new System.Drawing.Size(131, 81);
             this.txtOthers.TabIndex = 17;
             // 
             // label9
@@ -202,7 +203,7 @@
             // txtQuantity
             // 
             this.txtQuantity.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.Location = new System.Drawing.Point(454, 316);
+            this.txtQuantity.Location = new System.Drawing.Point(454, 267);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(131, 26);
             this.txtQuantity.TabIndex = 19;
@@ -211,7 +212,7 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(328, 313);
+            this.label10.Location = new System.Drawing.Point(328, 262);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(112, 31);
             this.label10.TabIndex = 18;
@@ -220,8 +221,9 @@
             // txtCategoryID
             // 
             this.txtCategoryID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCategoryID.Location = new System.Drawing.Point(454, 367);
+            this.txtCategoryID.Location = new System.Drawing.Point(454, 324);
             this.txtCategoryID.Name = "txtCategoryID";
+            this.txtCategoryID.ReadOnly = true;
             this.txtCategoryID.Size = new System.Drawing.Size(131, 26);
             this.txtCategoryID.TabIndex = 21;
             this.txtCategoryID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberOnlyKeyPress);
@@ -229,7 +231,7 @@
             // label11
             // 
             this.label11.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(328, 364);
+            this.label11.Location = new System.Drawing.Point(328, 319);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(112, 31);
             this.label11.TabIndex = 20;
@@ -265,19 +267,6 @@
             this.btnOperation.Text = "Operation";
             this.btnOperation.UseVisualStyleBackColor = false;
             this.btnOperation.Click += new System.EventHandler(this.Button_Click);
-            // 
-            // btnCategory
-            // 
-            this.btnCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.btnCategory.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategory.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCategory.Location = new System.Drawing.Point(199, 476);
-            this.btnCategory.Name = "btnCategory";
-            this.btnCategory.Size = new System.Drawing.Size(96, 56);
-            this.btnCategory.TabIndex = 28;
-            this.btnCategory.Text = "Category";
-            this.btnCategory.UseVisualStyleBackColor = false;
-            this.btnCategory.Click += new System.EventHandler(this.Button_Click);
             // 
             // dtpDateAdded
             // 
@@ -336,17 +325,30 @@
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.Button_Click);
             // 
+            // btnGetCategoryID
+            // 
+            this.btnGetCategoryID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnGetCategoryID.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetCategoryID.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnGetCategoryID.Location = new System.Drawing.Point(332, 364);
+            this.btnGetCategoryID.Name = "btnGetCategoryID";
+            this.btnGetCategoryID.Size = new System.Drawing.Size(253, 44);
+            this.btnGetCategoryID.TabIndex = 34;
+            this.btnGetCategoryID.Text = "Category ID From DEWEY Code";
+            this.btnGetCategoryID.UseVisualStyleBackColor = false;
+            this.btnGetCategoryID.Click += new System.EventHandler(this.Button_Click);
+            // 
             // DialogAddUpdateBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 544);
+            this.Controls.Add(this.btnGetCategoryID);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblBook);
             this.Controls.Add(this.txtYear);
             this.Controls.Add(this.dtpDateAdded);
-            this.Controls.Add(this.btnCategory);
             this.Controls.Add(this.btnOperation);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label12);
@@ -405,11 +407,11 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnOperation;
-        private System.Windows.Forms.Button btnCategory;
         private System.Windows.Forms.DateTimePicker dtpDateAdded;
         private System.Windows.Forms.TextBox txtYear;
         private System.Windows.Forms.Label lblBook;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnGetCategoryID;
     }
 }

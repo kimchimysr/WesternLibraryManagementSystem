@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
@@ -19,8 +20,13 @@ namespace LibraryDBMS.Forms
         private DataTable dataTable;
         private bool isEditMode;
         private bool isNumberOrBackSpace;
+        private int cateIDFromDEWEYCode { get; set; }
+        private string DEWEYCode { get; set; }
+        private int firstThreeDigitsOfDEWEYCode { get; set; }
+
 
         //validate year 
+        
         Regex validateYear = new Regex("^[0-2]{1}[0-9]{3}$");
         #endregion
         public DialogAddUpdateBook()
@@ -36,6 +42,7 @@ namespace LibraryDBMS.Forms
             dataTable = dataTableUser;
             if (!isEditMode)
             {
+                this.btnGetCategoryID.Enabled = false;
                 this.Text = "Adding New Book Data";
                 this.lblBook.Text = "Add New Book Data";
                 this.txtBookID.Text = LibModule.GetAutoID("tblBook","bookID");
@@ -44,6 +51,7 @@ namespace LibraryDBMS.Forms
             }
             else
             {
+                this.btnGetCategoryID.Enabled = false;
                 this.Text = " Editing Book Data";
                 this.lblBook.Text = "Edit Book Data";
                 this.btnOperation.Text = "Edit";
@@ -153,6 +161,11 @@ namespace LibraryDBMS.Forms
                     this.txtCategoryID.Clear();
                     this.dtpDateAdded.Value = DateTime.Now;
                     break;
+                case "btnGetCategoryID":
+                    calculateCategoryID();
+                    break;
+
+
             }
         }
         private void numberOnlyKeyPress(object sender,KeyPressEventArgs e)
@@ -168,15 +181,57 @@ namespace LibraryDBMS.Forms
 
             }
         }
+        private int calculateCategoryIDFromDEWEYCode(int DEWEYCode)
+        {
+            if (DEWEYCode > 0 && DEWEYCode <= 100) { return 1; }
+            else if (DEWEYCode > 100 && DEWEYCode <= 200) { return 2; }
+            else if (DEWEYCode > 200 && DEWEYCode <= 300) { return 3; }
+            else if (DEWEYCode > 300 && DEWEYCode <= 400) { return 4; }
+            else if (DEWEYCode > 400 && DEWEYCode <= 500) { return 5; }
+            else if (DEWEYCode > 500 && DEWEYCode <= 600) { return 6; }
+            else if (DEWEYCode > 600 && DEWEYCode <= 700) { return 7; }
+            else if (DEWEYCode > 700 && DEWEYCode <= 800) { return 8; }
+            else if (DEWEYCode > 800 && DEWEYCode <= 900) { return 9; }
+            else if (DEWEYCode > 900 && DEWEYCode <= 1000) { return 10; }
+            else { return 0; }
+        }
+        private void calculateCategoryID()
+        {
+            try
+            {
+                DEWEYCode = this.txtDEWEYCode.Text;
+                firstThreeDigitsOfDEWEYCode = Convert.ToInt32(DEWEYCode.Substring(0, 3));
+                cateIDFromDEWEYCode = calculateCategoryIDFromDEWEYCode(firstThreeDigitsOfDEWEYCode);
+                this.txtCategoryID.Text = cateIDFromDEWEYCode.ToString();
+            }
+            catch(FormatException fmex)
+            {
+                MessageBox.Show("Wrong Format","Format Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            catch(ArgumentOutOfRangeException aoorex)
+            {
+                MessageBox.Show("Missing string from DEWEY Code", "Argument Out Of Range Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
+        }
 
         #endregion
-
-
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtDEWEYCode_TextChanged(object sender, EventArgs e)
+        {
+            string deweyCodeAfterTrim = this.txtDEWEYCode.Text.Trim();
+            int  length = deweyCodeAfterTrim.Length;
+            if (length >= 3)
+            {
+                this.btnGetCategoryID.Enabled = true;
+            }
+            else this.btnGetCategoryID.Enabled = false;
         }
     }
 }
